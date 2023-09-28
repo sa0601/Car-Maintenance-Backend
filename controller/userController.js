@@ -4,7 +4,7 @@ const bcrypt = require('bcrypt');
 const User = require("../models/user");
 const Car = require("../models/car");
 
-router.get('/login', async (req, res) => {
+router.get('/', async (req, res) => {
     try {
         const newUsers = await User.find({});
         res.status(200).json(newUsers);
