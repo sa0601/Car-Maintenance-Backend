@@ -4,8 +4,13 @@ const bcrypt = require('bcrypt');
 const User = require("../models/user");
 const Car = require("../models/car");
 
-router.get('/login', (req, res) => {
-    res.render("auth/login")
+router.get('/login', async (req, res) => {
+    try {
+        const newUsers = await User.find({});
+        res.status(200).json(newUsers);
+    } catch (error) {
+        res.status(400).json(error);
+    }
 });
 
 router.post("/login", async (req, res) => {
